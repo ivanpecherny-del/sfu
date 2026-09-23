@@ -1,0 +1,287 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 900;
+    font-style: normal;
+}
+
+:root {
+    --ink: #a906e9;
+    --muted: #ef1919;
+    --accent: #f205bfec;
+    --accent-soft: #ffe6d5;
+    --paper: #fbfaf7;
+    --line: #e0ddd6;
+    --code-bg: #2b2d33;
+}
+
+body {
+    font-family: 'Rubik', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink);
+    background-color: var(--paper);
+    margin: 0;
+    padding: 0 20px 40px;
+}
+
+.page-header {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0 10px;
+    border-bottom: 3px dashed var(--accent);
+}
+
+h1 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-style: italic;
+    margin: 0;
+}
+
+.contents {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 20px 30px;
+    background: #ffffff;
+    border-left: 6px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.contents-title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin: 0 0 12px;
+}
+
+.contents ul {
+    list-style-type: square;
+    padding-left: 22px;
+    margin: 0;
+}
+
+.contents li {
+    margin: 6px 0;
+}
+
+.contents a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--muted);
+    transition: color 0.25s, border-color 0.25s;
+}
+
+.contents a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 40px 0 15px;
+    padding: 6px 14px;
+    background: var(--accent-soft);
+    border-radius: 6px;
+    display: inline-block;
+}
+
+h3 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 25px 0 10px;
+}
+
+p {
+    margin: 0 0 14px;
+}
+
+.figure {
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.figure--west {
+    float: left;
+    width: 170px;
+    margin: 6px 22px 12px 0;
+}
+
+.figure--east {
+    float: right;
+    width: 170px;
+    margin: 6px 0 12px 22px;
+}
+
+.figure--middle {
+    display: block;
+    width: 240px;
+    margin: 25px auto;
+    clear: both;
+}
+
+.spacer {
+    clear: both;
+}
+
+.bullets {
+    list-style-type: circle;
+    padding-left: 24px;
+}
+
+.icon-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.icon-list li {
+    background-image: url('images/marker.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 14px 14px;
+    padding-left: 24px;
+    margin-bottom: 6px;
+}
+
+.versions {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.versions caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    padding: 0 0 10px;
+}
+
+.versions th {
+    background: var(--accent);
+    color: #fff;
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+}
+
+.versions td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+}
+
+.versions tbody tr:nth-child(even) {
+    background: #f5f2ec;
+}
+
+.versions tbody tr:hover {
+    background: var(--accent-soft);
+    transition: background 0.2s;
+}
+
+.code-block {
+    background: var(--code-bg);
+    color: #e6e6e6;
+    padding: 18px 22px;
+    border-radius: 12px;
+    border-left: 5px solid var(--accent);
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.c-comment  { color: #7d8590; font-style: italic; }
+.c-keyword  { color: #ff7b72; }
+.c-type     { color: #79c0ff; }
+.c-method   { color: #d2a8ff; }
+.c-string   { color: #a5d6ff; }
+.c-number   { color: #ffab70; }
+.c-var      { color: #ffd866; }
+
+.ref {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s;
+}
+
+.ref:hover {
+    border-bottom-color: var(--accent);
+}
+
+.back-link {
+    text-align: right;
+    font-size: 13px;
+}
+
+.back-link a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    color: var(--accent);
+}
+
+.toolbox {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 25px 30px;
+    background: var(--ink);
+    color: #e8e8e8;
+    border-radius: 14px;
+}
+
+.toolbox h2 {
+    background: transparent;
+    color: var(--accent);
+    padding: 0;
+    margin-top: 0;
+}
+
+.toolbox h3 {
+    color: #fff;
+}
+
+.tag-cloud {
+    line-height: 2.2;
+}
+
+.toolbox code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #ffd866;
+}
