@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1 — цифры 71</title>
+    <style>
+        /* Центрирование: html — flex-контейнер на весь экран,
+           body (с его стандартными симметричными отступами) центрируется как flex-элемент */
+        html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .number {
+            display: flex;
+            gap: 40px;
+        }
+
+        .digit {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        /* квадратный блок — все блоки одного размера */
+        .cell {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* единственный цвет во всём css */
+        .on {
+            background: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="number">
+
+        <!-- цифра 7 -->
+        <div class="digit">
+            <div class="row"><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell on"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+        </div>
+
+        <!-- цифра 1 -->
+        <div class="digit">
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell on"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+            <div class="row"><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div></div>
+        </div>
+
+    </div>
+</body>
+</html>
