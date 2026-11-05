@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация абитуриента</title>
+    <link rel="stylesheet" href="../Common/normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Приёмная комиссия</h1>
+    <p class="subtitle">Заполните анкету для поступления в университет</p>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <fieldset>
+            <legend>Личные данные</legend>
+            
+            <div class="form-group">
+                <label for="fullname">ФИО</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Иванов Иван Иванович" required>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate">Дата рождения</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+            </div>
+            
+            <div class="form-group radio-group">
+                <span class="group-title">Пол</span>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="male" checked> Мужской
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="gender" value="female"> Женский
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Образование</legend>
+
+            <div class="form-group">
+                <label for="school">Учебное заведение (оконченное)</label>
+                <input type="text" id="school" name="school" placeholder="МБОУ СОШ №1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="faculty">Направление подготовки</label>
+                <select id="faculty" name="faculty" required>
+                    <option value="" disabled selected>Выберите факультет</option>
+                    <option value="it">Прикладная информатика</option>
+                    <option value="economy">Экономика</option>
+                    <option value="law">Юриспруденция</option>
+                    <option value="design">Дизайн</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="score">Баллы ЕГЭ (сумма)</label>
+                <input type="text" id="score" name="score" placeholder="Например: 245" required>
+            </div>
+
+            <div class="form-group">
+                <label for="documents">Скан-копии документов (аттестат)</label>
+                <input type="file" id="documents" name="documents" accept=".pdf,.jpg,.png">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Дополнительно</legend>
+            
+            <div class="form-group">
+                <label for="comment">Достижения (олимпиады, спорт)</label>
+                <textarea id="comment" name="comment" rows="3" placeholder="Перечислите ваши достижения..."></textarea>
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">Отправить заявку</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

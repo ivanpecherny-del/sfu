@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eef2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #1a202c;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+fieldset {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+legend {
+    font-weight: bold;
+    color: #2b6cb0;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2d3748;
+    transition: border-color 0.2s;
+    background-color: #f7fafc;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3182ce;
+    background-color: #ffffff;
+}
+
+.radio-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.group-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal !important;
+    cursor: pointer;
+    margin-bottom: 0 !important;
+    font-size: 14px;
+    color: #2d3748;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #2b6cb0;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        background-color: #ffffff;
+    }
+
+    .form-container {
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    fieldset {
+        border: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    legend {
+        font-size: 18px;
+        padding: 0;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .form-group label {
+        display: none;
+    }
+
+    .group-title {
+        display: none;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="file"],
+    select,
+    textarea {
+        padding: 14px 12px;
+        font-size: 16px;
+    }
+}
