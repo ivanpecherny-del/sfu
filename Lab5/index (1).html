@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа — Вариант 6</title>
+    <style>
+        /* Встроенные стили, чтобы ничего не отвалилось */
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid #3498db;
+        }
+        h2 {
+            margin-top: 0;
+            color: #3498db;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        p {
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            font-weight: bold;
+            color: #27ae60;
+            font-size: 16px;
+            background: #eafaf1;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: none;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Решения задач (Вариант 6)</h1>
+
+    <!-- ЗАДАНИЕ 1 -->
+    <div class="card">
+        <h2>Задание 1. Проверка даты на корректность</h2>
+        <p>Дан день, месяц и год. Определить, является ли дата корректной, не используя объект Date.</p>
+        <button onclick="runTask1()">Ввести дату</button>
+        <div class="result" id="task1-res"></div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2А -->
+    <div class="card">
+        <h2>Задание 2 (Часть А). Сумма элементов массива</h2>
+        <p>Сумма элементов между первым и последним, модуль разности которых с числом e не превосходит 10<sup>-5</sup>.</p>
+        <button onclick="runTask2A()">Ввести массив</button>
+        <div class="result" id="task2a-res"></div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2Б -->
+    <div class="card">
+        <h2>Задание 2 (Часть Б). Удаление элементов</h2>
+        <p>Удалить элементы, модуль целой части которых — сумма цифр является простым числом.</p>
+        <button onclick="runTask2B()">Ввести массив</button>
+        <div class="result" id="task2b-res"></div>
+    </div>
+
+    <!-- ЗАДАНИЕ 4 -->
+    <div class="card">
+        <h2>Задание 4. Поиск самого длинного слова</h2>
+        <p>Дано предложение. Найти самое длинное слово в предложении.</p>
+        <button onclick="runTask4()">Ввести предложение</button>
+        <div class="result" id="task4-res"></div>
+    </div>
+
+</div>
+
+<script>
+    // Функция для красивого вывода
+    function showResult(id, text) {
+        const el = document.getElementById(id);
+        el.innerHTML = text;
+        el.style.display = 'block';
+    }
+
+    // ЗАДАНИЕ 1
+    function runTask1() {
+        let day = parseInt(prompt("Введите день (1-31):"));
+        let month = parseInt(prompt("Введите месяц (1-12):"));
+        let year = parseInt(prompt("Введите год:"));
+        
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            alert("Нужно ввести числа!");
+            return;
+        }
+
+        if (year < 1 || month < 1 || month > 12 || day < 1) {
+            showResult('task1-res', `Дата ${day}.${month}.${year} — НЕКОРРЕКТНА (недопустимые значения)`);
+            return;
+        }
+
+        let isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+        let daysInMonth = [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        if (day > daysInMonth[month - 1]) {
+            showResult('task1-res', `Дата ${day}.${month}.${year} — НЕКОРРЕКТНА (в этом месяце ${daysInMonth[month - 1]} дней)`);
+        } else {
+            showResult('task1-res', `Дата ${day}.${month}.${year} — КОРРЕКТНА`);
+        }
+    }
+
+    // Парсер массива
+    function parseArrayInput(input) {
+        return input.split(/[\s,]+/).filter(s => s !== "").map(Number).filter(n => !isNaN(n));
+    }
+
+    // ЗАДАНИЕ 2А
+    function runTask2A() {
+        let input = prompt("Введите числа через запятую или пробел (для проверки добавьте 2.718281828):");
+        if (input === null || input.trim() === "") return;
+
+        let arr = parseArrayInput(input);
+        if (arr.length === 0) { alert("Нет чисел"); return; }
+
+        let e = Math.E;
+        let firstIdx = -1;
+        let lastIdx = -1;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (Math.abs(arr[i] - e) <= 0.00001) {
+                if (firstIdx === -1) firstIdx = i;
+                lastIdx = i;
+            }
+        }
+
+        if (firstIdx === -1) {
+            showResult('task2a-res', `Элементов, близких к числу e, не найдено.`);
+            return;
+        }
+
+        let sum = 0;
+        for (let i = firstIdx + 1; i < lastIdx; i++) {
+            sum += arr[i];
+        }
+
+        showResult('task2a-res', `Массив: [${arr.join(', ')}]<br>Сумма между индексами ${firstIdx} и ${lastIdx}: ${sum}`);
+    }
+
+    // ЗАДАНИЕ 2Б
+    function runTask2B() {
+        let input = prompt("Введите числа через запятую или пробел:");
+        if (input === null || input.trim() === "") return;
+
+        let arr = parseArrayInput(input);
+        if (arr.length === 0) { alert("Нет чисел"); return; }
+
+        function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function sumDigitsPrime(num) {
+            let str = Math.abs(Math.trunc(num)).toString();
+            let sum = 0;
+            for (let i = 0; i < str.length; i++) {
+                sum += parseInt(str[i]);
+            }
+            return isPrime(sum);
+        }
+
+        let filtered = arr.filter(item => !sumDigitsPrime(item));
+        
+        showResult('task2b-res', `Исходный: [${arr.join(', ')}]<br>Оставшиеся (сумма цифр не простая): [${filtered.join(', ')}]`);
+    }
+
+    // ЗАДАНИЕ 4
+    function runTask4() {
+        let input = prompt("Введите предложение:");
+        if (input === null || input.trim() === "") return;
+
+        let words = input.trim().split(/\s+/);
+        let longest = "";
+        
+        for (let i = 0; i < words.length; i++) {
+            let cleanWord = words[i].replace(/[.,!?;:]/g, '');
+            if (cleanWord.length > longest.length) {
+                longest = cleanWord;
+            }
+        }
+
+        showResult('task4-res', `Предложение: "${input}"<br>Самое длинное слово: <b>"${longest}"</b> (${longest.length} букв)`);
+    }
+</script>
+
+</body>
+</html>
